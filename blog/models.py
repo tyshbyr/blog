@@ -11,6 +11,9 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('blog:category_page', kwargs={'slug':self.slug})
+
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
@@ -23,6 +26,12 @@ class Subcategory(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('blog:subcategory_page', kwargs={
+            'category_slug':self.category.slug,
+            'slug':self.slug
+            })
 
     class Meta:
         verbose_name = 'Подкатегория'
@@ -40,9 +49,6 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
-
-    def get_absolute_url(self):
-        return reverse('blog:article_detail', kwargs={'slug':self.slug})
 
     class Meta:
         verbose_name = 'Статья'
