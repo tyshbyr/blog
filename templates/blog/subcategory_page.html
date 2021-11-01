@@ -4,6 +4,6 @@
 <h1>{{ slug }}</h1>
 <h1>{{ category_slug }}</h1>
 {% for article in article_list %}
-    <h1>SubCategory{{ article.title }}</h1>
+    <a href="{{ article.get_absolute_url }}"><h1>{{ article.title }}</h1></a>
 {% endfor %}
 {% endblock content %}

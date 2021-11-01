@@ -4,7 +4,7 @@
 {% for subcategory in subcategory_list %}
     <a href="{{ subcategory.get_absolute_url }}"><h1>{{ subcategory.title }}</h1></a>
         {% for article  in article_list %}
-            <h2>{% if article.subcategory.pk == subcategory.id %}{{ article.title }}{% endif %}</h2>
+            <h2>{% if article.subcategory.pk == subcategory.id %}<a href="{{ article.get_absolute_url }}">{{ article.title }}</a>{% endif %}</h2>
         {% endfor %}
 {% endfor %}
 {% endblock content %}
