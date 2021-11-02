@@ -1,13 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-{% for category in category_list %}
-    <a href="{{ category.get_absolute_url }}"><h1>{{ category.title }}{{ category.id }}</h1></a>
-        {% for subcategory  in subcategory_list %}
-            <h2>{% if subcategory.category.pk == category.id %}
-                    <a href="{{ subcategory.get_absolute_url }}">{{ subcategory.title }}</a>
-                {% endif %}
-            </h2>
-        {% endfor %}
-{% endfor %}
+
+{% include 'include/navbar.html' %}
+
+<h1>Home Page</h1>
+
 {% endblock content %}

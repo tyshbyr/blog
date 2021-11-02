@@ -1,5 +1,13 @@
-Article Page = {{ article.title }}
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
 
-<p>{{ category_slug }}</p>
-<p>{{ slug }}</p>
-<p>{{ article_slug }}</p>
+{% include 'include/navbar.html' %}
+
+<h1>Article Page</h1>
+
+{{ article.title }}
+
+<img src="{{ article.image.url }}" alt="">
+
+{% endblock content %}
