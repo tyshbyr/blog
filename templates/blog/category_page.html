@@ -4,7 +4,36 @@
 
 {% include 'include/navbar.html' %}
 
-<h1>Category Page</h1>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+
+{% for subcategory in subcategory_list %}
+<a href="{{ subcategory.get_absolute_url }}"><h1>{{ subcategory.title }}</h1></a>
+{% for article  in article_list %}
+    
+    {% if article.subcategory.pk == subcategory.id %}
+    <div class="carousel-item {% if forloop.last %} active {% endif %}">
+      <img src="{{ article.image.url }}" class="d-block w-100" alt="...">
+    {% endif %}
+    </div>
+{% endfor %}
+{% endfor %}
+
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 
 {% for subcategory in subcategory_list %}
     <a href="{{ subcategory.get_absolute_url }}"><h1>{{ subcategory.title }}</h1></a>

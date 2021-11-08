@@ -30,7 +30,7 @@ class Subcategory(models.Model):
     def get_absolute_url(self):
         return reverse('blog:subcategory_page', kwargs={
             'category_slug':self.category.slug,
-            'slug':self.slug
+            'subcategory_slug':self.slug
             })
 
     class Meta:
@@ -53,7 +53,7 @@ class Article(models.Model):
     def get_absolute_url(self):
         return reverse('blog:article_page', kwargs={
             'category_slug':self.subcategory.category.slug,
-            'slug':self.subcategory.slug,
+            'subcategory_slug':self.subcategory.slug,
             'article_slug':self.slug
             })
 
